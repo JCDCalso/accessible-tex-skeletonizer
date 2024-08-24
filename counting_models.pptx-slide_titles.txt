@@ -1,0 +1,47 @@
+From alignments to counting
+We have alignments, what’s next?
+Gene counting - a.k.a. “raw counts”
+Gene counting can be misleading
+Issues with raw counts
+How wrong is gene counting?
+The latent allocation problem
+The latent allocation problem
+The latent allocation problem
+The latent allocation problem
+The (linear) latent allocation problem
+The (linear) latent allocation problem
+The (linear) latent allocation problem
+A brief aside on plate notation and graphical models
+Two related graphical models
+Gaussian with fixed mean
+Gaussian with random mean
+Multinomial model
+Graphical representation of Multinomial
+Multinomial connection to RNA-seq
+Multinomial connection to RNA-seq (analogy on HW2)
+The (linear) latent allocation problem
+RNA-seq, the full generative model
+Let’s “simulate” from this graphical model
+RNA-seq, the likelihood
+Yes, we can the total likelihood by read mapping
+Isoform abundance estimation
+
+Breakout session
+Abundance estimates exihibit overdispersion because of ambiguous mappings
+The bootstrap approximates the variance with limited data
+Non-parametric bootstrap (slightly more formal)
+Hypothesis testing
+In RNA-seq, and most sequencing protocols we estimate the relative abundances
+How much variance is there in abundance estimates?
+kallisto enables sampling from the joint distribution
+Breakout
+Equivalence class sampling recapitulates the sub-sampled variance
+Point estimates only tell part of the story
+Point estimates only tell part of the story
+Point estimates only tell part of the story
+Inferential variance may be negligible for some isoforms
+Inferential variance may be large for other isoforms
+sleuth enables isoform differential expression
+Extensions of kallisto for other experiments
+Shotgun metagenomics quantification
+Fusion detection in cancer
