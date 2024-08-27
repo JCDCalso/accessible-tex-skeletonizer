@@ -15,10 +15,9 @@ def txt_to_list_to_dict(filepath):
     # Section takes name from slide
 
     content = {'sections':[]}
-    for title in titles:
-        x = {'title': title, 'slides': []}
+    for i, title in enumerate(titles, start=1):
+        x = {'title': title, 'slideimg': f"slide.{i:03}.png"}
 
-        x['slides'].append({'title':title, 'content': 'insert content'})
         content['sections'].append(x)
 
     return content

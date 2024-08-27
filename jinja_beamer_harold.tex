@@ -1,6 +1,6 @@
 %{# jinja-templates/Beamer-Harold.tex#}
 
-i%--------------------- THEMES and FORMATTING -----------------------------------
+%--------------------- THEMES and FORMATTING -----------------------------------
 \documentclass[
 	17pt, % Set the default font size, options include: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt
 	%t, % Uncomment to vertically align all slide content to the top of the slide, rather than the default centered
@@ -14,12 +14,15 @@ i%--------------------- THEMES and FORMATTING ----------------------------------
 
 % Image Packages
 \usepackage{graphicx} % For including images
+% For borders around slide screenshots:
+\setlength{\fboxrule}{3pt} % Thickness 
+\setlength{\fboxsep}{5pt} % Padding
 \usepackage{caption} % For custom captions to those images
 \usepackage{subcaption} % Some figures comprised of subfigures
 
 
 % Set Graphics Folder Path:
-\graphicspath{{../hjp-images-errors_and_snps_png/}}
+%\graphicspath{must be set AFTER rendering, template looks for ANY double brace}
 
 % Custom Caption Style (no "Figure")
 \captionsetup[figure]{labelformat=empty,singlelinecheck=false}
@@ -49,18 +52,19 @@ i%--------------------- THEMES and FORMATTING ----------------------------------
 
 \begin{document}
 
-\frame{\titlepage}
+\maketitle
 
 {% for section in sections %}
+\newpage
 \section{ {{ section.title }} }
 
-{% for slide in section.slides %}
-\begin{frame}
-  \frametitle{ {{ slide.title }} }
-  { {{ slide.content }} }
-\end{frame}
-
-{% endfor %}
+\begin{figure}[h]
+  \fbox{
+  \includegraphics[width=\textwidth,
+  alt = {Screenshot of slide "{{section.title}}"}]{ {{section.slideimg}} }
+}
+  \caption{Screenshot of slide titled: `` {{section.title}} ''}
+\end{figure}
 
 {% endfor %}
 
