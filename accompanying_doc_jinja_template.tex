@@ -1,0 +1,60 @@
+%{# jinja-templates/accompanying_doc.tex #}
+
+%--------------------- THEMES and FORMATTING -----------------------------------
+\documentclass[
+	17pt, % Set the default font size, options include: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt
+	%t, % Uncomment to vertically align all slide content to the top of the slide, rather than the default centered
+]{article}
+
+
+% Hyperref for long descriptions (according to documentation, import before geometry)
+\usepackage{hyperref} % Allows linking and cross-referencing within the document.
+
+% You can alter page dimensions using the geometry package, default is 8.5 x 11 with 1 in margins
+\usepackage[margin=1in, nohead, nofoot]{geometry}
+
+% Image Packages
+\usepackage{graphicx} % For including images
+% For borders around slide screenshots:
+\setlength{\fboxrule}{3pt} % Thickness 
+\setlength{\fboxsep}{5pt} % Padding
+\usepackage{caption} % For custom captions to those images
+
+
+% Set Graphics Folder Path:
+%\graphicspath{must be set AFTER rendering, template looks for ANY double brace}
+
+% Custom Caption Style (no "Figure")
+\captionsetup[figure]{labelformat=empty,singlelinecheck=false}
+
+% Custom Section Heading (no numbering)
+\setcounter{secnumdepth}{0}
+
+\usepackage{amsmath} % Better math typesetting and other funcs
+\usepackage{enumitem} % Make nested sublists prettier
+
+%-------------------- Title, Auth, Date, etc Metadata -----------------------------------
+\title{Accessibility: Accompanying Document for Slide Deck}
+\author{Prof So-and-So, PhD}
+\date{} % No date default
+%-------------------- BEGIN DOC BELOW  ----------------------------------------
+
+\begin{document}
+
+\maketitle
+
+{% for section in sections %}
+\newpage
+\section{ {{ section.title }} }
+
+\begin{figure}[h]
+  \fbox{
+  \includegraphics[width=\textwidth,
+  alt = {Screenshot of slide "{{section.title}}"}]{ {{section.slideimg}} }
+}
+  \caption{Screenshot of slide: `` {{section.title}} ''}
+\end{figure}
+
+{% endfor %}
+
+\end{document}
