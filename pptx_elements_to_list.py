@@ -35,7 +35,7 @@ def main():
     args, unknown = parser.parse_known_args()
 
     # OPTIONAL: 
-    default_output_filename = f"{os.path.splitext(os.path.basename(args.prs_filepath))[0]}-slide_titles.txt"
+    default_output_filename = f"{os.path.splitext(os.path.basename(args.prs_filepath))[0]}-slide_titles"
     parser.add_argument('-o', '--output_filename', type=str, \
                         default=default_output_filename, \
                         help='Specify output filename. \
@@ -50,7 +50,7 @@ def main():
 
     # Grab all titles as a list, write to output text file  
     title_list = iterate_thru_slides(pres, grab_title_if_exists)
-    data_to_text_file(title_list, args.output_filename)
+    data_to_text_file(title_list, f"{args.output_filename}.txt")
 
 # Run main function if running script directly
 if __name__ == "__main__":
