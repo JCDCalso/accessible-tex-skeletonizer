@@ -13,3 +13,9 @@
 # Python Cache
 __pycache__/
 
+# Testing Directory
+test/
+
+# For other stuff I'm working on
+working-area-ignore/
+

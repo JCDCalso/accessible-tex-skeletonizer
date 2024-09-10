@@ -16,7 +16,7 @@ def txt_to_list_to_dict(filepath):
 
     content = {'sections':[]}
     for i, title in enumerate(titles, start=1):
-        x = {'title': title, 'slideimg': f"slide.{i:03}.png"}
+        x = {'title': title, 'slideimg': f"dna_sequencing_pg{i}.pdf"}
 
         content['sections'].append(x)
 
