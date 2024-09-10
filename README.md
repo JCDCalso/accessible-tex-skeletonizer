@@ -6,7 +6,6 @@ This command line workflow allows a user to quickly set up the skeleton for the 
 In its very basic form, this accompanying document is broken up into sections for each slide, and each section consists of a screenshot/`PNG` of the slide and 
 allows the remediator/accessibility engineer to verbosely describe the contents of the slide, making full use of LaTeX heading (subsection, subsubsection, paragraph, subparagraph), lists, math environments, etc. 
 
-
 ## Contents and Description
 
 ### pptx_elements_to_list.py
@@ -71,4 +70,4 @@ This will output `New_Accompanying_Doc.tex` in the same directory, which will be
     * `--num_format="d"` as a standard integer (`1`,`2`, etc)
     * `--num_format="02"` for two digits with leading zeros (`01`,`02`,`03`, etc)
 
-
+## How to go from a PowerPoint to a Latex Skeleton:
