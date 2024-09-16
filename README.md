@@ -71,3 +71,8 @@ This will output `New_Accompanying_Doc.tex` in the same directory, which will be
     * `--num_format="02"` for two digits with leading zeros (`01`,`02`,`03`, etc)
 
 ## How to go from a PowerPoint to a Latex Skeleton:
+The workflow is divided into the following steps:
+1. Export your slide deck as a directory of individual images.
+2. Create the text file of your list of titles. 
+3. Prepare the .tex template. 
+4. Render the template and output the skeleton document. 
