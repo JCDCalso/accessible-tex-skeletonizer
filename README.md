@@ -45,7 +45,11 @@ This is a specially formatted `.tex` file that serves as a template for the rend
 
 In its current configuration, the template will create a new page and a new section named for each title of your text file of title slides. It will place the `PNG` of each slide at the top of each page, with a caption and alt text that read "screenshot of slide [title of slide]." You can change this caption and alt text as you see fit, but it is adviseable to keep them the same as each other. The screenshot of the slide will have a box drawn around it, you can modify the appearance of this box with the `fbox` settings in the preamble.
 
-Of note, you will have to set the graphics path (to the folder containing all images of your slide deck) in the preamble of the LaTeX doc **after** it renders.
+#### Notes:
+
+* Of note, you will have to set the graphics path (to the folder containing all images of your slide deck) in the preamble of the LaTeX doc **after** it renders.
+
+* There are some quirks with how the rendering is done that mean you should look out for certain symbol combinations. Nested braces `{{}}` is one, which jinja interprets as its own command for a dictionary. This explains the previous point. Another to watch out for is `{#` which is the default comment for jinja and will trigger an [end of comment error](https://stackoverflow.com/questions/72762152/jinja2-exceptions-templatesyntaxerror-missing-end-of-comment-tag)
 
 ### txt_to_template_rendering.py
 
