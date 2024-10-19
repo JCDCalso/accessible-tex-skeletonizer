@@ -32,7 +32,11 @@ As of now, the text file will only contain the titles of each slide on a new lin
   * If the slide deck was generated without using default master slide templates, and titles were manually added as basic text boxes/shapes, `python-pptx` will not recognize arbitrary text boxes as titles.
 2. The number of lines equals the number of slides in the original .pptx file.
 
-For slides without titles, an empty line will be printed. It is adviseable to add your own title for this slide.
+#### Notes
+
+* For slides without titles, an empty line will be printed. It is adviseable to add your own title for this slide.
+
+* Does not seem to work with ppt, so if you have a ppt, it's pretty easy to upconvert to .pptx in PowerPoint "Save As"
 
 ### accompanying_doc_jinja_template.tex
 
