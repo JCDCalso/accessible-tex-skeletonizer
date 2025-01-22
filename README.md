@@ -1,11 +1,59 @@
-# accessible-tex-skeletonizer
-# Workflow for Establishing Skeleton Accompanying Document from Presentation File
+# accessible-tex-skeletonizer: Workflow for Establishing Skeleton Accompanying Document from Presentation File
 
 ## General Overview:
 
 This command line workflow allows a user to quickly set up the skeleton for the "Accompanying Accessibility Document" `.tex` file, going from the original `.pptx` or `.key` presentation slide deck. 
 In its very basic form, this accompanying document is broken up into sections for each slide, and each section consists of a screenshot/`PNG` of the slide and 
 allows the remediator/accessibility engineer to verbosely describe the contents of the slide, making full use of LaTeX heading (subsection, subsubsection, paragraph, subparagraph), lists, math environments, etc. 
+
+## How to go from a Slide Deck to a Latex Skeleton:
+The workflow is divided into the following steps:
+1. Export your slide deck as a directory of individual images.
+2. Create the text file of your list of titles. 
+3. Prepare the .tex template. 
+4. Render the template and output the skeleton document. 
+
+### Step 1: From Slide Deck to Images
+
+#### Powerpoint
+* With your `.pptx` file open, go to `File > Export` which opens a dialogue box.
+* Select your directory, change the `File Format` option to `PNG`, which is the best for LaTeX
+* Be sure the option for `Save Every Slide` is selected. 
+  * This option will save every image as its own `.png`, with the name and numbering scheme `Slide1.png`, `Slide2.png`, ..., etc. 
+  * These slides will be placed in a folder with the name you provide in the `Export As` field.
+* Click `Export` and after a short while all your slides will be saved as individually named and numbered PNG files.
+
+#### Keynote
+If working with keynote, it may be easier to simply convert the `.key` file into a `.pptx` file to facilitate the other steps of this workflow (namely step 2, requiring `python-pptx`. However, some elements may not translate well. In which case, it may be useful to export the slide deck into individual images.
+* With your `.key` file open, go to `File > Export To... > Images`, which opens a dialogue box.
+* Select `All` for `Slides`, `PNG` for `Format`
+* Once you select `Save` and set your directory, your slide deck will be saved as individual images in a folder with the name and numbering scheme `presentation name.001.png`, `presentation name.002.png`, ..., etc
+
+### Step 2: Setting up the slide titles text file
+In this step, create a `.txt` file with the title of each slide on its own line.
+
+Ultimately, this `.txt` file will be used to create a Python dictionary which will allow it to autofill a template that helps us set up our document. 
+
+To make this step easier, we can use a different Python helper script, [pptx_elements_to_list.py](#pptx_elements_to_listpy) that will pull the titles from a `.pptx` slide. 
+
+Some notes on this `titles.txt` file:
+- Ensure you have exactly the same number of lines for each slide of your original file.
+- Some slides in your original slide title may have not had a title. For the LaTeX Accessibility Doc, it's best if each slide is given a name.
+- Repeated slide titles are okay, but it may be useful to have a numbering system (i.e. "Slide Title (1)," "Slide Title (2)," "Slide Title (3)," etc.)
+
+### Step 3: Prepare the specially formatted .tex template
+Details in [section on accompanying_doc_jinja_template.tex](#accompanying_doc_jinja_templatetex).
+
+### Step 4: Render the jinja template
+Details in [section on txt_to_template_rendering.py](#txt_to_template_renderingpy).
+
+### Step 5: Before you compile your LaTeX document
+In this version of the workflow, you have to set the graphics path to the directory containing your slide images **after** rendering the jinja template. 
+
+In the preamble (the section before `\begin{document}`): 
+```
+\graphicspath{path to your folder/directory containing the slide images you made in step 1}
+```
 
 ## Contents and Description
 
@@ -78,10 +126,3 @@ This will output `New_Accompanying_Doc.tex` in the same directory, which will be
   * Set number of leading zeros or no leading zeros (default is three digits with leading zeros `001`,`002`,`003`, etc):
     * `--num_format="d"` as a standard integer (`1`,`2`, etc)
     * `--num_format="02"` for two digits with leading zeros (`01`,`02`,`03`, etc)
-
-## How to go from a PowerPoint to a Latex Skeleton:
-The workflow is divided into the following steps:
-1. Export your slide deck as a directory of individual images.
-2. Create the text file of your list of titles. 
-3. Prepare the .tex template. 
-4. Render the template and output the skeleton document. 
