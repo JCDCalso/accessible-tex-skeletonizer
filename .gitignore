@@ -9,6 +9,7 @@
 
 # PDF files
 *.pdf
+*.pptx
 
 # Python Cache
 __pycache__/
