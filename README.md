@@ -2,9 +2,7 @@
 
 ## General Overview:
 
-This command line workflow allows a user to quickly set up the skeleton for the "Accompanying Accessibility Document" `.tex` file, going from the original `.pptx` or `.key` presentation slide deck. 
-In its very basic form, this accompanying document is broken up into sections for each slide, and each section consists of a screenshot/`PNG` of the slide and 
-allows the remediator/accessibility engineer to verbosely describe the contents of the slide, making full use of LaTeX heading (subsection, subsubsection, paragraph, subparagraph), lists, math environments, etc. 
+This command line workflow allows a user to quickly set up the skeleton for the ["Accompanying Accessibility Document"](https://github.com/JCDCalso/accessible-tex-skeletonizer/wiki/About-the-%22Accompanying-Doc%22) `.tex` file, going from the original `.pptx` or `.key` presentation slide deck. 
 
 ## How to go from a Slide Deck to a Latex Skeleton:
 The workflow is divided into the following steps:
