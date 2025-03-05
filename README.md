@@ -2,7 +2,7 @@
 
 ## General Overview:
 
-This command line workflow allows a user to quickly set up the skeleton for the ["Accompanying Accessibility Document"](https://github.com/JCDCalso/accessible-tex-skeletonizer/wiki/About-the-%22Accompanying-Doc%22) `.tex` file, going from the original `.pptx` or `.key` presentation slide deck. 
+This command line workflow allows a user to quickly set up the skeleton for the ["Accompanying Accessibility Document"](https://github.com/JCDCalso/accessible-tex-skeletonizer/wiki/About) `.tex` file, going from the original `.pptx` or `.key` presentation slide deck. 
 
 ## How to go from a Slide Deck to a Latex Skeleton:
 The workflow is divided into the following steps:
