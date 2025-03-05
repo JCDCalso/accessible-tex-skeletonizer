@@ -96,7 +96,9 @@ In its current configuration, the template will create a new page and a new sect
 
 * Of note, you will have to set the graphics path (to the folder containing all images of your slide deck) in the preamble of the LaTeX doc **after** it renders.
 
-* There are some quirks with how the rendering is done that mean you should look out for certain symbol combinations. Nested braces `{{}}` is one, which jinja interprets as its own command for a dictionary. This explains the previous point. Another to watch out for is `{#` which is the default comment for jinja and will trigger an [end of comment error](https://stackoverflow.com/questions/72762152/jinja2-exceptions-templatesyntaxerror-missing-end-of-comment-tag)
+* There are some quirks with how the rendering is done that mean you should look out for certain symbol combinations. Nested braces `{{}}` is one, which jinja interprets as its own command for a dictionary. This explains the previous point.
+
+* Another to watch out for is `{#` which is the default comment for jinja and will trigger an [end of comment error](https://stackoverflow.com/questions/72762152/jinja2-exceptions-templatesyntaxerror-missing-end-of-comment-tag)
 
 ### txt_to_template_rendering.py
 
