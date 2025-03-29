@@ -67,6 +67,48 @@ def step_2_generate_elements_list_txt(pptx_path):
 def step_3_prepare_jinja_tex_template():
     input("\nStep 3: Prepare the specially formatted .tex template. Press Enter when done...")
 
+def step_4_render_document(txt_path, template_path):
+    print(f"\n Step 4: Rendering output document. ")
+    if not os.path.exists(txt_path):
+        print("Error: Could not find the .txt file.")
+        sys.exit(1)
+    if not os.path.exists(template_path):
+        print("Error: Could not find the .tex template file.")
+        sys.exit(1)
+
+    subprocess_cmd = ["python", "txt_to_template_rendering.py", txt_path, template_path]
+
+    # Options:
+    #   Output name
+    output_name = input("Optional: Enter a name for the output .tex file \
+                            (or press Enter to use default): ").strip()
+    if output_name:
+        subprocess_cmd += ["--output_name", output_name]
+
+    #   Image Naming Options:
+    use_custom_images = input("Optional: Use custom image prefix/suffix or format? \
+                                Default is slide.###.png [y/N]: ").strip().lower()
+    if use_custom_images == 'y':
+        prefix = input("Enter image filename prefix (or press Enter to skip): ").strip()
+        suffix = input("Enter image file extension (e.g., .png, .pdf) (or press Enter to skip): ").strip()
+        num_format = input("Enter number format (e.g., 03 for leading zeros, d for plain integer): ").strip()
+
+        if prefix:
+            subprocess_cmd += ["--prefix", prefix]
+        if suffix:
+            subprocess_cmd += ["--suffix", suffix]
+        if num_format:
+            subprocess_cmd += ["--num_format", num_format]
+
+    # Run the command
+    try:
+        subprocess.run(subprocess_cmd, check=True)
+        print("Template rendered successfully.")
+    except subprocess.CalledProcessError:
+        print("Error: Failed to render the template.")
+        sys.exit(1)
+
+
 
 
 def main():
@@ -95,6 +137,15 @@ def main():
     # Dependency check for jinja
     step_3_prepare_jinja_tex_template()
     check_and_install_package("jinja2", "Jinja2")
+
+    # Step  4: Render
+    #       4a: prompt for files
+    #       4b: options
+    #       4c: complete render
+    element_list_txt_path = input("Enter the path to your .txt file: ").strip()
+    jinja_template_tex_path = input("Enter the path to your template .tex file: ").strip()
+
+    step_4_render_document(element_list_txt_path, jinja_template_tex_path)
 
 
     print("End of up to check_and_install_package 2")
