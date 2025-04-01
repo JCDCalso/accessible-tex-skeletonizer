@@ -20,8 +20,11 @@ def txt_to_list_to_dict(filepath, prefix, num_format, suffix):
     return content
 
 def jinja2_content_write(texTemplate, new_name, content_dict):
-    # Load the Jinja2 template
-    env = Environment(loader=FileSystemLoader(os.path.dirname(__file__)))
+    # Load the Jinja2 template, with modularity for abs and relative paths
+    fullpath = os.path.abspath(texTemplate)
+    head_dir, texTemplate = os.path.split(fullpath)
+
+    env = Environment(loader=FileSystemLoader(head_dir))
     template = env.get_template(texTemplate)
 
     # Render the template with the content
