@@ -25,7 +25,11 @@ readline.parse_and_bind("tab: complete")
 def step_1_export_images():
     input("\nStep 1: Please export your slide deck as individual PNG images. Press Enter when done...")
 
-def check_and_install_package(module_name, package_name=None): # Used to check for python_pptx
+def check_and_install_package(module_name, package_name=None):
+    """
+    Will check for module_name like pptx or jinja2, and install the package package_name using pip
+    if not found.
+    """
     package_name = package_name or module_name
     print(f"Checking for required package \"{module_name}.\"")
     try:
@@ -84,6 +88,7 @@ def step_4_render_document(txt_path, template_path):
                             (or press Enter to use default): ").strip()
     if output_name:
         subprocess_cmd += ["--output_name", output_name]
+        print(f"Rendered document will be named {output_name}.tex")
 
     #   Image Naming Options:
     use_custom_images = input("Optional: Use custom image prefix/suffix or format? \
