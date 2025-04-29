@@ -99,11 +99,11 @@ def step_4_render_document(txt_path, template_path):
         num_format = input("Enter number format (e.g., 03 for leading zeros, d for plain integer): ").strip()
 
         if prefix:
-            subprocess_cmd += ["--prefix", prefix]
+            subprocess_cmd += [f"--prefix={prefix}"]
         if suffix:
-            subprocess_cmd += ["--suffix", suffix]
+            subprocess_cmd += [f"--suffix={suffix}"]
         if num_format:
-            subprocess_cmd += ["--num_format", num_format]
+            subprocess_cmd += [f"--num_format={num_format}"]
 
     # Run the command
     try:
